@@ -1,0 +1,359 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.5                     
+******************************************************************************
+>> Linked Fri Oct 22 14:13:55 2021
+
+OUTPUT FILE NAME:   <TivaWare Template.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000009c9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000bf8  0003f408  R  X
+  SRAM                  20000000   00008000  0000046c  00007b94  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000bfc   00000bfc    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    000007ec   000007ec    r-x .text
+  00000a58    00000a58    0000018c   0000018c    r-- .const
+  00000be8    00000be8    00000014   00000014    r-- .cinit
+20000000    20000000    00000470   00000000    rw-
+  20000000    20000000    0000026c   00000000    rw- .vtable
+  20000270    20000270    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    000007ec     
+                  0000026c    000002e0     uart.obj (.text)
+                  0000054c    00000284     interrupt.obj (.text)
+                  000007d0    00000100     debug.obj (.text)
+                  000008d0    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  0000094a    00000002     --HOLE-- [fill = 0]
+                  0000094c    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000990    00000036     cpu.obj (.text)
+                  000009c6    00000002     --HOLE-- [fill = 0]
+                  000009c8    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  000009fc    0000002c     main.obj (.text)
+                  00000a28    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000a44    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000a50    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000a54    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00000a58    0000018c     
+                  00000a58    0000010c     interrupt.obj (.const:$O1$$)
+                  00000b64    00000080     uart.obj (.const:$O1$$)
+
+.cinit     0    00000be8    00000014     
+                  00000be8    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00000bf0    00000004     (__TI_handler_table)
+                  00000bf4    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.vtable    0    20000000    0000026c     UNINITIALIZED
+                  20000000    0000026c     interrupt.obj (.vtable)
+
+.stack     0    20000270    00000200     UNINITIALIZED
+                  20000270    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000274    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         12     620       0      
+                                                              
+    .\Template Files\src\
+       debug.obj                      256    0         0      
+       main.obj                       44     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         300    0         0      
+                                                              
+    .\TivaWARE\driverlib\
+       interrupt.obj                  644    268       620    
+       uart.obj                       736    128       0      
+       cpu.obj                        54     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1434   396       620    
+                                                              
+    C:\ti\ccs1040\ccs\tools\compiler\ti-cgt-arm_20.2.5.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memset_t2.asm.obj              122    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            52     0         0      
+       copy_zero_init.c.obj           28     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         278    0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      20        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   2024   1036      1132   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000bf4 records: 1, size/record: 8, table size: 8
+	.vtable: load addr=00000be8, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000bf0 records: 1, size/record: 4, table size: 4
+	index: 0, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00000a55  C$$EXIT                       
+000009bd  CPUbasepriGet                 
+000009b7  CPUbasepriSet                 
+000009ab  CPUcpsid                      
+0000099f  CPUcpsie                      
+00000995  CPUprimask                    
+00000991  CPUwfi                        
+00000751  IntDisable                    
+000006fd  IntEnable                     
+000006a5  IntIsEnabled                  
+00000695  IntMasterDisable              
+00000685  IntMasterEnable               
+00000649  IntPendClear                  
+000005ff  IntPendSet                    
+000005e5  IntPriorityGet                
+000005bf  IntPriorityGroupingGet        
+000005ab  IntPriorityGroupingSet        
+000009bd  IntPriorityMaskGet            
+000009b7  IntPriorityMaskSet            
+0000058b  IntPrioritySet                
+00000561  IntRegister                   
+00000559  IntTrigger                    
+0000054f  IntUnregister                 
+00000a45  ResetISR                      
+00000991  SysCtlSleep                   
+00000883  UART0_init                    
+00000511  UART9BitAddrSend              
+00000507  UART9BitAddrSet               
+000004f9  UART9BitDisable               
+000004eb  UART9BitEnable                
+000004d7  UARTBreakCtl                  
+000004cf  UARTBusy                      
+000004c5  UARTCharGet                   
+000004b7  UARTCharGetNonBlocking        
+000004ad  UARTCharPut                   
+0000049f  UARTCharPutNonBlocking        
+00000491  UARTCharsAvail                
+0000048b  UARTClockSourceGet            
+00000485  UARTClockSourceSet            
+0000045f  UARTConfigGetExpClk           
+0000041d  UARTConfigSetExpClk           
+00000413  UARTDMADisable                
+0000040b  UARTDMAEnable                 
+000003f1  UARTDisable                   
+000003e7  UARTDisableSIR                
+000003d3  UARTEnable                    
+000003bf  UARTEnableSIR                 
+000003b5  UARTFIFODisable               
+000003ab  UARTFIFOEnable                
+0000039b  UARTFIFOLevelGet              
+00000395  UARTFIFOLevelSet              
+0000038d  UARTFlowControlGet            
+00000381  UARTFlowControlSet            
+0000037d  UARTIntClear                  
+00000373  UARTIntDisable                
+0000036b  UARTIntEnable                 
+00000353  UARTIntRegister               
+00000349  UARTIntStatus                 
+00000335  UARTIntUnregister             
+00000301  UARTLoopbackEnable            
+000002ef  UARTModemControlClear         
+000002e7  UARTModemControlGet           
+000002db  UARTModemControlSet           
+000002d1  UARTModemStatusGet            
+000002c9  UARTParityModeGet             
+000002bd  UARTParityModeSet             
+000002b7  UARTRxErrorClear              
+000002af  UARTRxErrorGet                
+000002a5  UARTSmartCardDisable          
+0000028f  UARTSmartCardEnable           
+00000281  UARTSpaceAvail                
+00000279  UARTTxIntModeGet              
+0000026d  UARTTxIntModeSet              
+00000857  UART_receiveString            
+000007ed  UART_sendNumber               
+000007d1  UART_sendString               
+20000470  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000470  __STACK_TOP                   
+00000bf4  __TI_CINIT_Base               
+00000bfc  __TI_CINIT_Limit              
+00000bf0  __TI_Handler_Table_Base       
+00000bf4  __TI_Handler_Table_Limit      
+0000094d  __TI_auto_init_nobinit_nopinit
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00000a29  __TI_zero_init_nomemset       
+000008d1  __aeabi_memclr                
+000008d1  __aeabi_memclr4               
+000008d1  __aeabi_memclr8               
+000008d3  __aeabi_memset                
+000008d3  __aeabi_memset4               
+000008d3  __aeabi_memset8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000270  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+000009c9  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00000a51  _system_pre_init              
+00000a55  abort                         
+ffffffff  binit                         
+20000000  g_pfnRAMVectors               
+00000000  g_pfnVectors                  
+000009fd  main                          
+000008d9  memset                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  UARTTxIntModeSet              
+00000279  UARTTxIntModeGet              
+00000281  UARTSpaceAvail                
+0000028f  UARTSmartCardEnable           
+000002a5  UARTSmartCardDisable          
+000002af  UARTRxErrorGet                
+000002b7  UARTRxErrorClear              
+000002bd  UARTParityModeSet             
+000002c9  UARTParityModeGet             
+000002d1  UARTModemStatusGet            
+000002db  UARTModemControlSet           
+000002e7  UARTModemControlGet           
+000002ef  UARTModemControlClear         
+00000301  UARTLoopbackEnable            
+00000335  UARTIntUnregister             
+00000349  UARTIntStatus                 
+00000353  UARTIntRegister               
+0000036b  UARTIntEnable                 
+00000373  UARTIntDisable                
+0000037d  UARTIntClear                  
+00000381  UARTFlowControlSet            
+0000038d  UARTFlowControlGet            
+00000395  UARTFIFOLevelSet              
+0000039b  UARTFIFOLevelGet              
+000003ab  UARTFIFOEnable                
+000003b5  UARTFIFODisable               
+000003bf  UARTEnableSIR                 
+000003d3  UARTEnable                    
+000003e7  UARTDisableSIR                
+000003f1  UARTDisable                   
+0000040b  UARTDMAEnable                 
+00000413  UARTDMADisable                
+0000041d  UARTConfigSetExpClk           
+0000045f  UARTConfigGetExpClk           
+00000485  UARTClockSourceSet            
+0000048b  UARTClockSourceGet            
+00000491  UARTCharsAvail                
+0000049f  UARTCharPutNonBlocking        
+000004ad  UARTCharPut                   
+000004b7  UARTCharGetNonBlocking        
+000004c5  UARTCharGet                   
+000004cf  UARTBusy                      
+000004d7  UARTBreakCtl                  
+000004eb  UART9BitEnable                
+000004f9  UART9BitDisable               
+00000507  UART9BitAddrSet               
+00000511  UART9BitAddrSend              
+0000054f  IntUnregister                 
+00000559  IntTrigger                    
+00000561  IntRegister                   
+0000058b  IntPrioritySet                
+000005ab  IntPriorityGroupingSet        
+000005bf  IntPriorityGroupingGet        
+000005e5  IntPriorityGet                
+000005ff  IntPendSet                    
+00000649  IntPendClear                  
+00000685  IntMasterEnable               
+00000695  IntMasterDisable              
+000006a5  IntIsEnabled                  
+000006fd  IntEnable                     
+00000751  IntDisable                    
+000007d1  UART_sendString               
+000007ed  UART_sendNumber               
+00000857  UART_receiveString            
+00000883  UART0_init                    
+000008d1  __aeabi_memclr                
+000008d1  __aeabi_memclr4               
+000008d1  __aeabi_memclr8               
+000008d3  __aeabi_memset                
+000008d3  __aeabi_memset4               
+000008d3  __aeabi_memset8               
+000008d9  memset                        
+0000094d  __TI_auto_init_nobinit_nopinit
+00000991  CPUwfi                        
+00000991  SysCtlSleep                   
+00000995  CPUprimask                    
+0000099f  CPUcpsie                      
+000009ab  CPUcpsid                      
+000009b7  CPUbasepriSet                 
+000009b7  IntPriorityMaskSet            
+000009bd  CPUbasepriGet                 
+000009bd  IntPriorityMaskGet            
+000009c9  _c_int00_noargs               
+000009fd  main                          
+00000a29  __TI_zero_init_nomemset       
+00000a45  ResetISR                      
+00000a51  _system_pre_init              
+00000a55  C$$EXIT                       
+00000a55  abort                         
+00000bf0  __TI_Handler_Table_Base       
+00000bf4  __TI_CINIT_Base               
+00000bf4  __TI_Handler_Table_Limit      
+00000bfc  __TI_CINIT_Limit              
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000000  g_pfnRAMVectors               
+20000270  __stack                       
+20000470  __STACK_END                   
+20000470  __STACK_TOP                   
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[110 symbols]
